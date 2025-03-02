@@ -11,16 +11,14 @@ class MainWindow(QWidget):
         super().__init__()
 
         self.setWindowTitle("Обучение моделей")
-        self.setGeometry(100, 100, 270, 550)  # Размеры окна можно настроить
+        self.setGeometry(100, 100, 270, 550)  # Размеры окна 
 
-        # Инициализация атрибутов для предсказанных и реальных значений
         self.predicted_values = None
         self.actual_values = None
 
         # Layout для размещения виджетов
         layout = QVBoxLayout()
 
-        # Кнопки для каждого метода
         self.btn_rf = QPushButton("Обучить случайный лес", self)
         self.btn_lr = QPushButton("Обучить линейную регрессию", self)
         self.btn_svr = QPushButton("Обучить опорные векторы", self)
@@ -87,7 +85,6 @@ class MainWindow(QWidget):
         self.display_feature_importances(feature_importances)
         self.display_predicted_values(predicted_values)
 
-        # График в окне
         self.plot_graph()
 
     def train_linear_regression(self):
@@ -104,7 +101,6 @@ class MainWindow(QWidget):
         self.display_feature_importances(feature_importances)
         self.display_predicted_values(predicted_values)
 
-        # График в окне
         self.plot_graph()
 
     def train_svr(self):
@@ -121,7 +117,6 @@ class MainWindow(QWidget):
         self.display_feature_importances(feature_importances)
         self.display_predicted_values(predicted_values)
 
-        # График в окне
         self.plot_graph()
 
     def train_gb(self):
@@ -138,11 +133,9 @@ class MainWindow(QWidget):
         self.display_feature_importances(feature_importances)
         self.display_predicted_values(predicted_values)
 
-        # График в окне
         self.plot_graph()
 
     def plot_graph(self):
-        # Создаем новый объект Figure для отображения в PyQt
         fig, ax = plt.subplots(figsize=(8, 6))
         ax.set_title('Фактические vs Предсказанные значения')
         ax.set_xlabel('Фактические значения')
@@ -153,7 +146,6 @@ class MainWindow(QWidget):
         ax.plot([min(self.actual_values), max(self.actual_values)], 
                 [min(self.actual_values), max(self.actual_values)], color='red', linestyle='dashed')
 
-        # Создаем FigureCanvas для отображения
         canvas = FigureCanvas(fig)
         canvas.draw()
 
